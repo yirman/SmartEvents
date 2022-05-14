@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Smart Events</string>
+    <string name="enter_email">Ingresa tu email</string>
+    <string name="enter_password">Ingresa tu contraseña</string>
+    <string name="sign_in">Iniciar sesión</string>
+    <string name="personal_data">Datos personales</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="phone">Número Telefónico</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Clave</string>
+    <string name="sign_up">Registrarme</string>
+    <string name="question_dont_have_account">¿No tienes una cuenta?</string>
+    <string name="question_have_account">¿Ya tienes una cuenta?</string>
+    <string name="tab_public_events">Eventos Públicos</string>
+    <string name="tab_subscriptions">Suscripciones</string>
+    <string name="tab_my_events">Mis Eventos</string>
+</resources>
