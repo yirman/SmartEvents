@@ -1,20 +1,30 @@
 package com.german.events.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
 import com.german.events.databinding.ItemEventBinding
 import com.german.events.model.Event
 import com.google.firebase.auth.FirebaseUser
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
-class EventAdapter(val listener: OnSubscribeListener) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
+class EventAdapter(context: Context, private val listener: OnSubscribeListener) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
 
     private val items = mutableListOf<Event>()
 
     var firebaseUser: FirebaseUser? = null
-        @Inject set
+
+    init {
+        val myEntryPoint = EntryPointAccessors.fromApplication(context, EventEntryPoint::class.java)
+        firebaseUser = myEntryPoint.getFirebaseUser()
+    }
 
     fun setItems(items: List<Event>){
         this.items.clear()
@@ -39,7 +49,7 @@ class EventAdapter(val listener: OnSubscribeListener) : RecyclerView.Adapter<Eve
         fun bind(event: Event) {
             binding.name.text = event.name
             binding.address.text = event.address
-            binding.dateHour.text = event.date + " " + event.time
+            binding.dateHour.text = event.timestamp?.toDate().toString()
 
             if(firebaseUser.uid == event.createdBy){
                 binding.subscribe.visibility = View.GONE
@@ -55,5 +65,11 @@ class EventAdapter(val listener: OnSubscribeListener) : RecyclerView.Adapter<Eve
 
     interface OnSubscribeListener{
         fun onSubscribe(id: String)
+    }
+
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface EventEntryPoint {
+        fun getFirebaseUser(): FirebaseUser?
     }
 }
