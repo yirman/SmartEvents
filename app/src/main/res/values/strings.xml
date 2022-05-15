@@ -16,4 +16,9 @@
     <string name="tab_subscriptions">Suscripciones</string>
     <string name="tab_my_events">Mis Eventos</string>
     <string name="subscribe">Suscribirse</string>
+    <string name="create_event">Crear Evento</string>
+    <string name="address">Dirección</string>
+    <string name="date">Fecha</string>
+    <string name="hour">Hora</string>
+    <string name="create">Crear</string>
 </resources>

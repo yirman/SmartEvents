@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="@string/create_event"/>
+
+
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:layout_marginVertical="5dp"/>
+
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="@string/address"
+        android:inputType="text"
+        android:layout_marginVertical="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:hint="@string/date"
+            android:inputType="date"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/ic_edit_date"
+            android:layout_width="30dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_baseline_edit_24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/hour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:hint="@string/hour"
+            android:inputType="date"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/ic_edit_time"
+            android:layout_width="30dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_baseline_edit_24"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create"/>
+
+</LinearLayout>
