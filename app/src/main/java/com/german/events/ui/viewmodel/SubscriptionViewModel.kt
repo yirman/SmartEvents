@@ -26,8 +26,7 @@ class SubscriptionViewModel @Inject constructor(
             .addSnapshotListener { value, error ->
                 value?.let {
                     val subscriptions = value.toObjects(Subscription::class.java)
-                    if(subscriptions.isNotEmpty())
-                        handleSubscriptions(subscriptions)
+                    handleSubscriptions(subscriptions)
                 }
             }
     }
@@ -39,23 +38,28 @@ class SubscriptionViewModel @Inject constructor(
             .addOnCompleteListener { taskSubscriptions ->
                 if(taskSubscriptions.isSuccessful){
                     val subscriptions = taskSubscriptions.result.toObjects(Subscription::class.java)
-                    if(subscriptions.isNotEmpty())
-                        handleSubscriptions(subscriptions)
+                    handleSubscriptions(subscriptions)
                 }
             }
     }
 
     private fun handleSubscriptions(subscriptions: MutableList<Subscription>){
-        val idEvents = subscriptions.map { it.idEvent }
-        firebaseFirestore.collection("events")
-            .whereIn(FieldPath.documentId(), idEvents)
-            .get()
-            .addOnCompleteListener { taskEvents ->
-                if(taskEvents.isSuccessful){
-                    val events = taskEvents.result.toObjects(Event::class.java)
-                    _mySubscriptionEventsList.postValue(events)
+
+        if(subscriptions.isNotEmpty()){
+            val idEvents = subscriptions.map { it.idEvent }
+            firebaseFirestore.collection("events")
+                .whereIn(FieldPath.documentId(), idEvents)
+                .get()
+                .addOnCompleteListener { taskEvents ->
+                    if(taskEvents.isSuccessful){
+                        val events: MutableList<Event> = taskEvents.result.toObjects(Event::class.java)
+                        _mySubscriptionEventsList.postValue(events)
+                    }
                 }
-            }
+        }
+        else{
+            _mySubscriptionEventsList.postValue(mutableListOf())
+        }
     }
 
 }
