@@ -7,8 +7,10 @@ import com.german.events.model.User
 import com.german.events.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class SignupViewModel @Inject constructor(
     firebaseAuth: FirebaseAuth,
     firebaseFirestore: FirebaseFirestore
