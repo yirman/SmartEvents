@@ -1,12 +1,13 @@
 package com.german.events.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.german.events.R
 import com.german.events.databinding.ActivityMainBinding
 import com.german.events.ui.adapter.PagerAdapter
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    var firebaseUser: FirebaseUser? = null
+    var firebaseAuth: FirebaseAuth? = null
         @Inject set
 
     private lateinit var pagerAdapter: PagerAdapter
@@ -61,6 +62,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             return@setOnItemSelectedListener false
+        }
+
+        binding.logout.setOnClickListener {
+            firebaseAuth?.signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }
