@@ -34,6 +34,14 @@ class EventViewModel @Inject constructor(
                     _myEventsList.postValue(events)
                 }
             }
+        firebaseFirestore.collection("events")
+            .whereNotEqualTo("createdBy", firebaseAuth.uid)
+            .addSnapshotListener { value, error ->
+                value?.let {
+                    val events = value.toObjects(Event::class.java)
+                    _publicEventsList.postValue(events)
+                }
+            }
     }
 
     fun addEvent(event: Event){
