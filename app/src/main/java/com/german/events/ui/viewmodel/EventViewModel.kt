@@ -24,6 +24,17 @@ class EventViewModel @Inject constructor(
     private val _myEventsList : MutableLiveData<List<Event>> = MutableLiveData()
     val myEventsList : LiveData<List<Event>> = _myEventsList
 
+    init {
+        firebaseFirestore.collection("events")
+            .whereEqualTo("createdBy", firebaseAuth.uid)
+            .addSnapshotListener { value, error ->
+                value?.let {
+                    val events = value.toObjects(Event::class.java)
+                    _myEventsList.postValue(events)
+                }
+            }
+    }
+
     fun addEvent(event: Event){
         firebaseFirestore.collection("events").add(event)
             .addOnCompleteListener {
