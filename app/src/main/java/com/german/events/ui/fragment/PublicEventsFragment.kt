@@ -1,7 +1,6 @@
 package com.german.events.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.german.events.databinding.FragmentPublicEventsBinding
+import com.german.events.model.Event
 import com.german.events.ui.adapter.EventAdapter
 import com.german.events.ui.viewmodel.EventViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,8 +35,8 @@ class PublicEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
     ): View {
         binding = FragmentPublicEventsBinding.inflate(inflater, container, false)
         adapter = EventAdapter(requireContext(), this)
-        binding.layoutRecyclerEvents.recyclerEvents.layoutManager = LinearLayoutManager(requireContext())
-        binding.layoutRecyclerEvents.recyclerEvents.adapter = adapter
+        binding.layoutRecyclerEvents.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.layoutRecyclerEvents.recyclerview.adapter = adapter
         viewModel.publicEventsList.observe(viewLifecycleOwner){
             adapter.setItems(it)
         }
@@ -49,7 +49,7 @@ class PublicEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
         fun newInstance() = PublicEventsFragment()
     }
 
-    override fun onSubscribe(id: String) {
-        Log.e("on subscribe event id", id)
+    override fun onSubscribe(event: Event) {
+        viewModel.subscribeUser(event.eventId!!)
     }
 }

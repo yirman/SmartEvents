@@ -40,8 +40,8 @@ class MyEventsFragment : Fragment(), AddEventDialog.OnCreateEventListener{
     ): View {
         binding = FragmentMyEventsBinding.inflate(inflater, container, false)
         adapter = EventAdapter(context = requireContext())
-        binding.layoutRecyclerEvents.recyclerEvents.layoutManager = LinearLayoutManager(requireContext())
-        binding.layoutRecyclerEvents.recyclerEvents.adapter = adapter
+        binding.layoutRecyclerEvents.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.layoutRecyclerEvents.recyclerview.adapter = adapter
         viewModel.myEventsList.observe(viewLifecycleOwner){
             adapter.setItems(it)
         }

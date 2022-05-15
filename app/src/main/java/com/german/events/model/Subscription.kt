@@ -1,7 +1,9 @@
 package com.german.events.model
 
+import com.google.firebase.firestore.DocumentId
+
 data class Subscription (
-    val uidSubscriptor: String,
-    val idEvent: String,
-    val date: String
+    @DocumentId var subscriptionId: String? = null,
+    var idSubscriptor: String? = null,
+    var idEvent: String? = null
 )

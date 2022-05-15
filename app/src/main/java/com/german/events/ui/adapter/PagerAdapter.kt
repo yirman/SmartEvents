@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.german.events.ui.fragment.MyEventsFragment
 import com.german.events.ui.fragment.PublicEventsFragment
+import com.german.events.ui.fragment.SubscriptionsFragment
 
 class PagerAdapter(fm:FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
 
@@ -17,6 +18,7 @@ class PagerAdapter(fm:FragmentManager, lifecycle: Lifecycle) : FragmentStateAdap
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> PublicEventsFragment.newInstance()
+            1 -> SubscriptionsFragment.newInstance()
             2 -> MyEventsFragment.newInstance()
             else -> Fragment()
         }

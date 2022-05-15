@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/layout_recycler_events"
-        layout="@layout/recycler_events"/>
+        layout="@layout/recycler_view"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"

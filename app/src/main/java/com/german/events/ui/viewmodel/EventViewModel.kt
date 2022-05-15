@@ -3,6 +3,7 @@ package com.german.events.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.german.events.model.Event
+import com.german.events.model.Subscription
 import com.german.events.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -74,5 +75,14 @@ class EventViewModel @Inject constructor(
             }
     }
 
+    fun subscribeUser(idEvent: String){
+        val subscription = Subscription(idSubscriptor = firebaseAuth.uid, idEvent = idEvent)
+        firebaseFirestore.collection("subscriptions").add(subscription)
+            .addOnCompleteListener {
+                if(it.isSuccessful){
+
+                }
+            }
+    }
 
 }

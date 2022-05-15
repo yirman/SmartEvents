@@ -55,14 +55,14 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
             else{
                 binding.subscribe.visibility = View.VISIBLE
                 binding.subscribe.setOnClickListener {
-                    onSubscribeListener?.onSubscribe(event.eventId!!)
+                    onSubscribeListener?.onSubscribe(event)
                 }
             }
         }
     }
 
     interface OnSubscribeListener{
-        fun onSubscribe(id: String)
+        fun onSubscribe(event: Event)
     }
 
     @EntryPoint
