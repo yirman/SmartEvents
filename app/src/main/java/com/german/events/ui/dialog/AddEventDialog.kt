@@ -1,4 +1,4 @@
-package com.german.events.ui
+package com.german.events.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle

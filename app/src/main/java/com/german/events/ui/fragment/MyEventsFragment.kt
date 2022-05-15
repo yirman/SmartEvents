@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.german.events.databinding.FragmentMyEventsBinding
 import com.german.events.model.Event
-import com.german.events.ui.AddEventDialog
+import com.german.events.ui.dialog.AddEventDialog
 import com.german.events.ui.adapter.EventAdapter
 import com.german.events.ui.viewmodel.EventViewModel
 import dagger.hilt.android.AndroidEntryPoint

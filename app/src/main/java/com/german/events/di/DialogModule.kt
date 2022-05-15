@@ -1,6 +1,6 @@
 package com.german.events.di
 
-import com.german.events.ui.AddEventDialog
+import com.german.events.ui.dialog.AddEventDialog
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
