@@ -2,12 +2,10 @@ package com.german.events.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.german.events.R
 import com.german.events.databinding.ActivityMainBinding
 import com.german.events.ui.adapter.PagerAdapter
-import com.german.events.ui.viewmodel.MainViewModel
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -16,7 +14,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
 
     var firebaseUser: FirebaseUser? = null
         @Inject set
@@ -28,11 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupUI()
-//        viewModel.queryMyEvents(firebaseUser?.uid!!)
-//
-//        viewModel.eventsList.observe(this){
-//            Log.e("huehue", it.toString())
-//        }
     }
 
     private fun setupUI(){
