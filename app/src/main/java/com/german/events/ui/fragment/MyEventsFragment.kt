@@ -8,18 +8,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.german.events.databinding.FragmentMyEventsBinding
+import com.german.events.model.Event
+import com.german.events.ui.AddEventDialog
 import com.german.events.ui.adapter.EventAdapter
 import com.german.events.ui.viewmodel.EventViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MyEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
+class MyEventsFragment : Fragment(), AddEventDialog.OnCreateEventListener{
 
     private lateinit var binding: FragmentMyEventsBinding
     private val viewModel: EventViewModel by viewModels()
 
     private lateinit var adapter : EventAdapter
+
+    @Inject
+    lateinit var addEventDialog : AddEventDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +39,15 @@ class MyEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyEventsBinding.inflate(inflater, container, false)
-        adapter = EventAdapter(requireContext(), this)
+        adapter = EventAdapter(context = requireContext())
         binding.layoutRecyclerEvents.recyclerEvents.layoutManager = LinearLayoutManager(requireContext())
         binding.layoutRecyclerEvents.recyclerEvents.adapter = adapter
         viewModel.myEventsList.observe(viewLifecycleOwner){
             adapter.setItems(it)
+        }
+        binding.add.setOnClickListener {
+            addEventDialog.onCreateEventListener = this
+            addEventDialog.show(childFragmentManager, "AddEventDialog")
         }
         viewModel.requestMyEvents()
         return binding.root
@@ -48,7 +58,7 @@ class MyEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
         fun newInstance() = MyEventsFragment()
     }
 
-    override fun onSubscribe(id: String) {
-
+    override fun onCreateEvent(event: Event) {
+        viewModel.addEvent(event)
     }
 }

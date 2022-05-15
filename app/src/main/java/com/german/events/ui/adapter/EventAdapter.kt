@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
 import com.german.events.databinding.ItemEventBinding
 import com.german.events.model.Event
@@ -13,9 +12,8 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
 
-class EventAdapter(context: Context, private val listener: OnSubscribeListener) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
+class EventAdapter(context: Context, private val listener: OnSubscribeListener? = null) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
 
     private val items = mutableListOf<Event>()
 
@@ -45,7 +43,7 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener) 
         return items.size
     }
 
-    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeListener: OnSubscribeListener, private val firebaseUser: FirebaseUser) : RecyclerView.ViewHolder(binding.root){
+    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeListener: OnSubscribeListener?, private val firebaseUser: FirebaseUser) : RecyclerView.ViewHolder(binding.root){
         fun bind(event: Event) {
             binding.name.text = event.name
             binding.address.text = event.address
@@ -57,7 +55,7 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener) 
             else{
                 binding.subscribe.visibility = View.VISIBLE
                 binding.subscribe.setOnClickListener {
-                    onSubscribeListener.onSubscribe(event.eventId!!)
+                    onSubscribeListener?.onSubscribe(event.eventId!!)
                 }
             }
         }
