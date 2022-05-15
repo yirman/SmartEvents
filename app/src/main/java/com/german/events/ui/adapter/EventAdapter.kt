@@ -49,13 +49,10 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
             binding.address.text = event.address
             binding.dateHour.text = event.timestamp?.toDate().toString()
 
-            if(firebaseUser?.uid == event.createdBy){
-                binding.subscribe.visibility = View.GONE
-            }
-            else{
+            onSubscribeListener?.let {
                 binding.subscribe.visibility = View.VISIBLE
-                binding.subscribe.setOnClickListener {
-                    onSubscribeListener?.onSubscribe(event)
+                binding.subscribe.setOnClickListener { _ ->
+                    it.onSubscribe(event)
                 }
             }
         }
