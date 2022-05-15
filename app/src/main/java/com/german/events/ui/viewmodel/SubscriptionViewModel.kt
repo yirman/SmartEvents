@@ -26,7 +26,8 @@ class SubscriptionViewModel @Inject constructor(
             .addSnapshotListener { value, error ->
                 value?.let {
                     val subscriptions = value.toObjects(Subscription::class.java)
-                    handleSubscriptions(subscriptions)
+                    if(subscriptions.isNotEmpty())
+                        handleSubscriptions(subscriptions)
                 }
             }
     }
@@ -38,7 +39,8 @@ class SubscriptionViewModel @Inject constructor(
             .addOnCompleteListener { taskSubscriptions ->
                 if(taskSubscriptions.isSuccessful){
                     val subscriptions = taskSubscriptions.result.toObjects(Subscription::class.java)
-                    handleSubscriptions(subscriptions)
+                    if(subscriptions.isNotEmpty())
+                        handleSubscriptions(subscriptions)
                 }
             }
     }

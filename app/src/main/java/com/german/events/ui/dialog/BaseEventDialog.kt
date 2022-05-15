@@ -18,20 +18,15 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.google.firebase.Timestamp
-import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
 abstract class BaseEventDialog : DialogFragment() {
 
     lateinit var binding : EventFormBinding
-
-    var firebaseUser: FirebaseUser? = null
-        @Inject set
 
     var hourSelected : Long? = null
     var dateSelected : Long? = null
@@ -87,7 +82,6 @@ abstract class BaseEventDialog : DialogFragment() {
             }
             else{
                 val event = Event(
-                    createdBy = firebaseUser?.uid,
                     name = name,
                     address = address,
                     timestamp = Timestamp(Date((if(hourSelected!! != dateSelected!!) hourSelected!! + dateSelected!! else dateSelected)!!))

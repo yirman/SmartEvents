@@ -37,6 +37,7 @@ class EventViewModel @Inject constructor(
     }
 
     fun addEvent(event: Event){
+        event.createdBy = firebaseAuth.uid
         firebaseFirestore.collection("events").add(event)
             .addOnCompleteListener {
 
@@ -44,6 +45,7 @@ class EventViewModel @Inject constructor(
     }
 
     fun editEvent(event: Event){
+        event.createdBy = firebaseAuth.uid
         firebaseFirestore.collection("events")
             .document(event.eventId!!)
             .set(event)
