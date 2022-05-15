@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Events</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="personal_data">Personal information</string>
+    <string name="name">Name</string>
+    <string name="last_name">Lastname</string>
+    <string name="phone">Phone number</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="question_dont_have_account">¿Don\'t have an account?</string>
+    <string name="question_have_account">¿Already have an account?</string>
+    <string name="tab_public_events">Public Events</string>
+    <string name="tab_subscriptions">Subscriptions</string>
+    <string name="tab_my_events">My events</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="create_event">Create Event</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="address">Address</string>
+    <string name="date">Date</string>
+    <string name="hour">Hour</string>
+    <string name="create">Create</string>
+    <string name="edit">Edit</string>
+    <string name="fill_form">Please fill the form</string>
+</resources>
