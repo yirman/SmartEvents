@@ -13,7 +13,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
 
-class EventAdapter(context: Context, private val listener: OnSubscribeListener? = null) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
+class EventAdapter(context: Context, private val onSubscribeClickListener: OnSubscribeClickListener? = null, private val onEditClickListener: OnEditClickListener? = null) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
 
     private val items = mutableListOf<Event>()
 
@@ -32,7 +32,7 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventHolder {
         val binding: ItemEventBinding = ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return EventHolder(binding, listener)
+        return EventHolder(binding, onSubscribeClickListener, onEditClickListener)
     }
 
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
@@ -43,23 +43,34 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
         return items.size
     }
 
-    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeListener: OnSubscribeListener?) : RecyclerView.ViewHolder(binding.root){
+    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeClickListener: OnSubscribeClickListener?, private val onEditClickListener: OnEditClickListener?) : RecyclerView.ViewHolder(binding.root){
         fun bind(event: Event) {
             binding.name.text = event.name
             binding.address.text = event.address
             binding.dateHour.text = event.timestamp?.toDate().toString()
 
-            onSubscribeListener?.let {
+            onSubscribeClickListener?.let {
                 binding.subscribe.visibility = View.VISIBLE
                 binding.subscribe.setOnClickListener { _ ->
                     it.onSubscribe(event)
                 }
             }
+
+            onEditClickListener?.let {
+                binding.iconEdit.visibility = View.VISIBLE
+                binding.iconEdit.setOnClickListener { _ ->
+                    it.onEditClick(event)
+                }
+            }
         }
     }
 
-    interface OnSubscribeListener{
+    interface OnSubscribeClickListener{
         fun onSubscribe(event: Event)
+    }
+
+    interface OnEditClickListener{
+        fun onEditClick(event: Event)
     }
 
     @EntryPoint

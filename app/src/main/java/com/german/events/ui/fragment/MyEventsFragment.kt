@@ -11,21 +11,26 @@ import com.german.events.databinding.FragmentMyEventsBinding
 import com.german.events.model.Event
 import com.german.events.ui.dialog.AddEventDialog
 import com.german.events.ui.adapter.EventAdapter
+import com.german.events.ui.dialog.EditEventDialog
 import com.german.events.ui.viewmodel.EventViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MyEventsFragment : Fragment(), AddEventDialog.OnCreateEventListener{
+class MyEventsFragment : Fragment(), AddEventDialog.OnAddEventListener, EditEventDialog.OnEditEventListener, EventAdapter.OnEditClickListener{
 
     private lateinit var binding: FragmentMyEventsBinding
+
     private val viewModel: EventViewModel by viewModels()
 
     private lateinit var adapter : EventAdapter
 
     @Inject
     lateinit var addEventDialog : AddEventDialog
+
+    @Inject
+    lateinit var editEventDialog : EditEventDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +44,14 @@ class MyEventsFragment : Fragment(), AddEventDialog.OnCreateEventListener{
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyEventsBinding.inflate(inflater, container, false)
-        adapter = EventAdapter(context = requireContext())
+        adapter = EventAdapter(context = requireContext(), onEditClickListener = this)
         binding.layoutRecyclerEvents.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.layoutRecyclerEvents.recyclerview.adapter = adapter
         viewModel.myEventsList.observe(viewLifecycleOwner){
             adapter.setItems(it)
         }
         binding.add.setOnClickListener {
-            addEventDialog.onCreateEventListener = this
+            addEventDialog.onAddEventListener = this
             addEventDialog.show(childFragmentManager, "AddEventDialog")
         }
         viewModel.requestMyEvents()
@@ -58,7 +63,17 @@ class MyEventsFragment : Fragment(), AddEventDialog.OnCreateEventListener{
         fun newInstance() = MyEventsFragment()
     }
 
-    override fun onCreateEvent(event: Event) {
+    override fun onAddEvent(event: Event) {
         viewModel.addEvent(event)
+    }
+
+    override fun onEditClick(event: Event) {
+        editEventDialog.onEditEventListener = this
+        editEventDialog.event = event
+        editEventDialog.show(childFragmentManager, "EditEventDialog")
+    }
+
+    override fun onEditEvent(event: Event) {
+        viewModel.editEvent(event)
     }
 }

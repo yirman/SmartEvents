@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class PublicEventsFragment : Fragment(), EventAdapter.OnSubscribeListener{
+class PublicEventsFragment : Fragment(), EventAdapter.OnSubscribeClickListener{
 
     private lateinit var binding: FragmentPublicEventsBinding
     private val viewModel: EventViewModel by viewModels()

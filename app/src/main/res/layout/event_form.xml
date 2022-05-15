@@ -8,13 +8,13 @@
 
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:textColor="@color/black"
-        android:text="@string/create_event"/>
+        android:textColor="@color/black"/>
 
 
 
@@ -86,9 +86,8 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/action_event"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/create"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

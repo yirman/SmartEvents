@@ -17,9 +17,11 @@
     <string name="tab_my_events">Mis Eventos</string>
     <string name="subscribe">Suscribirse</string>
     <string name="create_event">Crear Evento</string>
+    <string name="edit_event">Editar Evento</string>
     <string name="address">Dirección</string>
     <string name="date">Fecha</string>
     <string name="hour">Hora</string>
     <string name="create">Crear</string>
+    <string name="edit">Editar</string>
     <string name="fill_form">Por favor rellenar todo el formulario</string>
 </resources>
