@@ -32,7 +32,7 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventHolder {
         val binding: ItemEventBinding = ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return EventHolder(binding, listener, firebaseUser)
+        return EventHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
@@ -43,7 +43,7 @@ class EventAdapter(context: Context, private val listener: OnSubscribeListener? 
         return items.size
     }
 
-    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeListener: OnSubscribeListener?, private val firebaseUser: FirebaseUser?) : RecyclerView.ViewHolder(binding.root){
+    class EventHolder(private val binding: ItemEventBinding, private val onSubscribeListener: OnSubscribeListener?) : RecyclerView.ViewHolder(binding.root){
         fun bind(event: Event) {
             binding.name.text = event.name
             binding.address.text = event.address
