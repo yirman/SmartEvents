@@ -18,9 +18,26 @@ class EventViewModel @Inject constructor(
     private val _publicEventStatus : MutableLiveData<Resource.Status> = MutableLiveData()
     val publicEventStatus : LiveData<Resource.Status> = _publicEventStatus
 
-
     private val _publicEventsList : MutableLiveData<List<Event>> = MutableLiveData()
     val publicEventsList : LiveData<List<Event>> = _publicEventsList
+
+    private val _myEventsList : MutableLiveData<List<Event>> = MutableLiveData()
+    val myEventsList : LiveData<List<Event>> = _myEventsList
+
+    fun requestMyEvents(){
+        firebaseFirestore.collection("events")
+            .whereEqualTo("createdBy", firebaseAuth.uid)
+            .get()
+            .addOnCompleteListener {
+                if(it.isSuccessful) {
+                    val events = it.result.toObjects(Event::class.java)
+                    _myEventsList.postValue(events)
+                }
+                else{
+
+                }
+            }
+    }
 
     fun requestPublicEvents() {
         _publicEventStatus.postValue(Resource.Status.LOADING)
