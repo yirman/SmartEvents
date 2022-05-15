@@ -14,13 +14,14 @@ class SplashActivity : AppCompatActivity() {
     var firebaseUser: FirebaseUser? = null
         @Inject set
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         if (firebaseUser == null) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
             startActivity(Intent(this, MainActivity::class.java))
         }
+        finish()
     }
 
 }
