@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mimi Glam Zone</string>
+    <string name="app_name">MediSalud</string>
     <string name="enter_email">Email</string>
     <string name="enter_password">Password</string>
     <string name="sign_in">Sign In</string>
