@@ -12,8 +12,10 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Events/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Events/app/src/main/res/layout/activity_splash.xml" value="0.153125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Events/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2677083333333333" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/activity_login.xml" value="0.153125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/drawable/splash_background.xml" value="0.2825" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/activity_main.xml" value="0.2821557971014493" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/activity_signup.xml" value="0.2753623188405797" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/dialog_add_event.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/dialog_edit_event.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/event_form.xml" value="0.36666666666666664" />
@@ -22,6 +24,8 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/fragment_subscriptions.xml" value="0.1388888888888889" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/item_event.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/layout/recycler_events.xml" value="0.28125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.327" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SmartEvents/app/src/main/res/mipmap-anydpi-v26/ic_launcher_mimi.xml" value="0.327" />
       </map>
     </option>
   </component>

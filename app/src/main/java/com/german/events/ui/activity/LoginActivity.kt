@@ -27,9 +27,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.optSignIn.setOnClickListener {
-            val email = binding.email.text.toString()
-            val password = binding.password.text.toString()
-            viewModel.signIn(email, password)
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
         }
 
         viewModel.loginStatus.observe(this) { status ->

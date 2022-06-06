@@ -26,15 +26,8 @@ class SignupActivity : AppCompatActivity() {
         }
 
         binding.optSignUp.setOnClickListener{
-
-            val name = binding.name.text.toString()
-            val lastName = binding.lastName.text.toString()
-            val phone = binding.phone.text.toString()
-            val email = binding.email.text.toString()
-            val password = binding.password.text.toString()
-
-            viewmodel.signUpUser(name, lastName, phone, email, password)
-
+            startActivity(Intent(this@SignupActivity, MainActivity::class.java))
+            finish()
         }
 
         viewmodel.signupStatus.observe(this) { status ->
