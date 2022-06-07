@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MediSalud</string>
+    <string name="app_name">Colegio Teresa de la Parra</string>
     <string name="enter_email">Ingresa tu email</string>
     <string name="enter_password">Ingresa tu contraseña</string>
     <string name="sign_in">Iniciar sesión</string>
